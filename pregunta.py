@@ -27,16 +27,18 @@ def ingest_data():
         regex = r"%\s*(.*?)\n"
         result = re.findall(regex,linea)
         if len(result) != 0:
-            linea1 = result[0].replace("  ","")
+            linea1 = result[0]
         if len(result) == 0:
             regex = r"\s*(.*?)\n"
             result = re.findall(regex,linea)
             if result == [""]:
-                dic["principales_palabras_clave"].append((linea1+linea2).replace(", ",",").replace(",",", "))
+                dic["principales_palabras_clave"].append(linea1+linea2)
                 linea2=""
             else:
-                linea2=(linea2+result[0]).replace("  ","").replace(".","")
+                linea2=(linea2+" "+result[0])
     df=pd.DataFrame(dic)
-    df["principales_palabras_clave"]=df["principales_palabras_clave"]
+    df["principales_palabras_clave"]=df["principales_palabras_clave"].str.replace(".","").str.replace("  "," ").str.replace("  "," ")
+    df.to_csv("cluster_report.csv")
+    
     return df
 print(ingest_data())
