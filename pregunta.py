@@ -13,7 +13,7 @@ import pandas as pd
 import re
 
 def ingest_data():
-    dic={"cluster":[],"cantidad_de_palabras clave":[],"porcentaje_de_palabras_clave":[],"principales_palabras_clave":[]}
+    dic={"cluster":[],"cantidad_de_palabras_clave":[],"porcentaje_de_palabras_clave":[],"principales_palabras_clave":[]}
     with open('clusters_report.txt', mode="r") as cluster:
         archivo = cluster.readlines()
     linea2=""
@@ -39,3 +39,4 @@ def ingest_data():
     df=pd.DataFrame(dic)
     df["principales_palabras_clave"]=df["principales_palabras_clave"]
     return df
+print(ingest_data())
