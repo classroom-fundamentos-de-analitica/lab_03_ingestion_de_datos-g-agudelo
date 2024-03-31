@@ -37,7 +37,7 @@ def ingest_data():
             else:
                 linea2=(linea2+" "+result[0])
     df=pd.DataFrame(dic)
-    df["principales_palabras_clave"]=df["principales_palabras_clave"].str.replace(".","").str.replace("  "," ").str.replace("  "," ")
+    df["principales_palabras_clave"]=df["principales_palabras_clave"].str.replace(".","").str.replace("  "," ").str.replace("  "," ").str.replace("  "," ")
     df.to_csv("cluster_report.csv")
     
     return df
