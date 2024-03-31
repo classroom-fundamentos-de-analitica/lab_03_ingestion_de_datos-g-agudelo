@@ -22,7 +22,7 @@ def ingest_data():
         result = re.findall(regex,linea)
         if len(result) != 0:
             dic["cluster"].append(int(result[0].strip()))
-            dic["cantidad_de_palabras clave"].append(int(result[1].strip()))
+            dic["cantidad_de_palabras_clave"].append(int(result[1].strip()))
             dic["porcentaje_de_palabras_clave"].append(float(result[2].strip().replace(",",".")))
         regex = r"%\s*(.*?)\n"
         result = re.findall(regex,linea)
